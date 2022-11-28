@@ -64,6 +64,7 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware("auth")->group(function() {
+    ## User CRUD
     Route::get('/dashboard/user', [UserController::class, "showAll"])->name("show_user");
     Route::get('/dashboard/user/edit/{id}', [UserController::class, "formEdit"])->name("form_edit_user");
     Route::put('/dashboard/user/edit/save/{id}', [UserController::class, "editUser"])->name("update_user");
@@ -72,6 +73,7 @@ Route::middleware("auth")->group(function() {
     Route::delete('/dashboard/user/delete/{id}', [UserController::class, "deleteUser"])->name("delete_user");
 
 
+    ## Mahasiswa CRUD
     Route::get('/dashboard/mahasiswa', [MahasiswaController::class, "showAll"])->name("show_mahasiswa");
     Route::get('/dashboard/mahasiswa/edit/{id}', [MahasiswaController::class, "formEdit"])->name("form_edit_mahasiswa");
     Route::put('/dashboard/mahasiswa/edit/save/{id}', [MahasiswaController::class, "editUser"])->name("update_mahasiswa");
@@ -79,6 +81,8 @@ Route::middleware("auth")->group(function() {
     Route::post('/dashboard/mahasiswa/new/save', [MahasiswaController::class, "newUser"])->name("new_mahasiswa");
     Route::delete('/dashboard/mahasiswa/delete/{id}', [MahasiswaController::class, "deleteUser"])->name("delete_mahasiswa");
 
+
+    ## Dosen CRUD
     Route::get('/dashboard/dosen', [DosenController::class, "showAll"])->name("show_dosen");
     Route::get('/dashboard/dosen/edit/{id}', [DosenController::class, "formEdit"])->name("form_edit_dosen");
     Route::put('/dashboard/dosen/edit/save/{id}', [DosenController::class, "editDosen"])->name("update_dosen");
@@ -86,13 +90,17 @@ Route::middleware("auth")->group(function() {
     Route::post('/dashboard/dosen/new/save', [DosenController::class, "newDosen"])->name("new_dosen");
     Route::delete('/dashboard/dosen/delete/{id}', [DosenController::class, "deleteDosen"])->name("delete_dosen");
 
-    Route::get('/dashboard/jawaban', [JawabanController::class, "showAll"])->name("show_jawaban");
-    Route::get('/dashboard/jawaban/edit/{id}', [JawabanController::class, "formEdit"])->name("form_edit_jawaban");
-    Route::put('/dashboard/jawaban/edit/save/{id}', [JawabanController::class, "editJawaban"])->name("update_jawaban");
-    Route::get('/dashboard/jawaban/new', [JawabanController::class, "formNew"])->name("form_new_jawaban");
-    Route::post('/dashboard/jawaban/new/save', [JawabanController::class, "newJawaban"])->name("new_jawaban");
-    Route::delete('/dashboard/jawaban/delete/{id}', [JawabanController::class, "deleteJawaban"])->name("delete_jawaban");
 
+    ## Kelas CRUD
+    Route::get('/dashboard/kelas', [KelasController::class, "showAll"])->name("show_kelas");
+    Route::get('/dashboard/kelas/edit/{id}', [KelasController::class, "formEdit"])->name("form_edit_kelas");
+    Route::put('/dashboard/kelas/edit/save/{id}', [KelasController::class, "editKelas"])->name("update_kelas");
+    Route::get('/dashboard/kelas/new', [KelasController::class, "formNew"])->name("form_new_kelas");
+    Route::post('/dashboard/kelas/new/save', [KelasController::class, "newKelas"])->name("new_kelas");
+    Route::delete('/dashboard/kelas/delete/{id}', [KelasController::class, "deleteKelas"])->name("delete_kelas");
+
+
+    ## Tugas CRUD
     Route::get('/dashboard/tugas', [TugasController::class, "showAll"])->name("show_tugas");
     Route::get('/dashboard/tugas/edit/{id}', [TugasController::class, "formEdit"])->name("form_edit_tugas");
     Route::put('/dashboard/tugas/edit/save/{id}', [TugasController::class, "editTugas"])->name("update_tugas");
@@ -100,12 +108,15 @@ Route::middleware("auth")->group(function() {
     Route::post('/dashboard/tugas/new/save', [TugasController::class, "newTugas"])->name("new_tugas");
     Route::delete('/dashboard/tugas/delete/{id}', [TugasController::class, "deleteTugas"])->name("delete_tugas");
 
-    Route::get('/dashboard/kelas', [KelasController::class, "showAll"])->name("show_kelas");
-    Route::get('/dashboard/kelas/edit/{id}', [KelasController::class, "formEdit"])->name("form_edit_kelas");
-    Route::put('/dashboard/kelas/edit/save/{id}', [KelasController::class, "editKelas"])->name("update_kelas");
-    Route::get('/dashboard/kelas/new', [KelasController::class, "formNew"])->name("form_new_kelas");
-    Route::post('/dashboard/kelas/new/save', [KelasController::class, "newKelas"])->name("new_kelas");
-    Route::delete('/dashboard/kelas/delete/{id}', [KelasController::class, "deleteKelas"])->name("delete_kelas");
+
+    ## Jawaban CRUD
+    Route::get('/dashboard/jawaban', [JawabanController::class, "showAll"])->name("show_jawaban");
+    Route::get('/dashboard/jawaban/edit/{id}', [JawabanController::class, "formEdit"])->name("form_edit_jawaban");
+    Route::put('/dashboard/jawaban/edit/save/{id}', [JawabanController::class, "editJawaban"])->name("update_jawaban");
+    Route::get('/dashboard/jawaban/new', [JawabanController::class, "formNew"])->name("form_new_jawaban");
+    Route::post('/dashboard/jawaban/new/save', [JawabanController::class, "newJawaban"])->name("new_jawaban");
+    Route::delete('/dashboard/jawaban/delete/{id}', [JawabanController::class, "deleteJawaban"])->name("delete_jawaban");
+
 
 });
 
