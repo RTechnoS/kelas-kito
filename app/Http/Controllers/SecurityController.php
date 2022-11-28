@@ -25,7 +25,7 @@ class SecurityController extends Controller
 
         if ($user != null) {
             Auth::login($user);
-            return "Login Berhasil";
+            return redirect(route("dashboard"));
         } else {
             return back();
         }

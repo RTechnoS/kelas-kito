@@ -25,7 +25,7 @@ use App\Http\Controllers\KelasController;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->name("dashboard");
 
 
 Route::middleware("auth")->group(function() {
