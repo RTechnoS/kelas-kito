@@ -40,7 +40,7 @@ class JawabanController extends Controller
     }
 
     public function deleteJawaban($id){
-        Tugas::destroy($id);
+        Jawaban::destroy($id);
         return redirect(route("show_jawaban"));
     }
 }

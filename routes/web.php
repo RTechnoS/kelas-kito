@@ -9,6 +9,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JawabanController;
 use App\Http\Controllers\TugasController;
+use App\Http\Controllers\KelasController;
 
 
 /*
@@ -98,6 +99,13 @@ Route::middleware("auth")->group(function() {
     Route::get('/dashboard/tugas/new', [TugasController::class, "formNew"])->name("form_new_tugas");
     Route::post('/dashboard/tugas/new/save', [TugasController::class, "newTugas"])->name("new_tugas");
     Route::delete('/dashboard/tugas/delete/{id}', [TugasController::class, "deleteTugas"])->name("delete_tugas");
+
+    Route::get('/dashboard/kelas', [KelasController::class, "showAll"])->name("show_kelas");
+    Route::get('/dashboard/kelas/edit/{id}', [KelasController::class, "formEdit"])->name("form_edit_kelas");
+    Route::put('/dashboard/kelas/edit/save/{id}', [KelasController::class, "editKelas"])->name("update_kelas");
+    Route::get('/dashboard/kelas/new', [KelasController::class, "formNew"])->name("form_new_kelas");
+    Route::post('/dashboard/kelas/new/save', [KelasController::class, "newKelas"])->name("new_kelas");
+    Route::delete('/dashboard/kelas/delete/{id}', [KelasController::class, "deleteKelas"])->name("delete_kelas");
 
 });
 
