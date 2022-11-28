@@ -24,10 +24,6 @@ use App\Http\Controllers\KelasController;
 */
 
 Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
@@ -86,12 +82,12 @@ Route::middleware("auth")->group(function() {
     Route::post('/dashboard/jawaban/new/save', [JawabanController::class, "newJawaban"])->name("new_jawaban");
     Route::delete('/dashboard/jawaban/delete/{id}', [JawabanController::class, "deleteJawaban"])->name("delete_jawaban");
 
-
+    Route::get("/logout", [SecurityController::class, "logout"])->name("logout");
 });
 
 
 Route::get("/login", [SecurityController::class, "formLogin"])->name("login");
 Route::post("/process-login", [SecurityController::class,"processLogin"])->name("process_login");
-Route::get("/logout", [SecurityController::class, "logout"])->name("logout");
+
 
 
