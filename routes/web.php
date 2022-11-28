@@ -27,37 +27,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/about-me', function () {
-    return view('about');
-})->name("aboutme");
-
-Route::get('/my-galery', function () {
-    return view('galery');
-})->name("galery");
-
-Route::get('/my-blog/', function () {
-    return view('blog');
-})->name("blog");
-
-Route::get('/my-blog/{id_post}', function ($id_post) {
-    return view('post')
-    ->with("idpost", $id_post)
-    ->with("waktu", date("H:m:s"));
-});
-
-Route::get('/my-store/{category?}', function ($category = "all") {
-    return view('store')
-    ->with("category", $category);
-})->name("store");
-
-Route::get('/admin', function () {
-    return view('admin');
-})->name("admin");
-
-Route::get('/admin/users', [UserController::class, "showAll"]);
-
-Route::get('/tes/{nama}', [TestingController::class, "CallTes"])->name("tes");
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });

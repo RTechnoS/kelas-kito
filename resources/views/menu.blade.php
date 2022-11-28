@@ -1,7 +1,9 @@
 <center>
-<a href="<?php echo route("aboutme") ?>">About Me</a> |
-<a href="<?php echo route("galery") ?>">My Galery</a> |
-<a href="<?php echo route("blog") ?>">My Blog</a> |
-<a href="<?php echo route("store") ?>">My Store</a> |
-<a href="<?php echo route("admin") ?>">Admin Login</a> |
+<a href="<?php echo route("show_user") ?>">User</a> |
+<a href="<?php echo route("show_mahasiswa") ?>">Mahasiswa</a> |
+<a href="<?php echo route("show_dosen") ?>">Dosen</a> |
+<a href="<?php echo route("show_kelas") ?>">Kelas</a> |
+<a href="<?php echo route("show_tugas") ?>">Tugas</a> |
+<a href="<?php echo route("show_jawaban") ?>">Jawaban</a> |
+<a href="<?php echo route("login") ?>">Login</a> |
 </center>
