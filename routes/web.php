@@ -10,6 +10,7 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JawabanController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\Anggota_kelasController;
 
 
 /*
@@ -24,12 +25,16 @@ use App\Http\Controllers\KelasController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
-})->name("dashboard");
+    return view('index');
+})->name("index");
 
 
 Route::middleware("auth")->group(function() {
     ## User CRUD
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name("dashboard");
+
     Route::get('/dashboard/user', [UserController::class, "showAll"])->name("show_user");
     Route::get('/dashboard/user/edit/{id}', [UserController::class, "formEdit"])->name("form_edit_user");
     Route::put('/dashboard/user/edit/save/{id}', [UserController::class, "editUser"])->name("update_user");
@@ -63,6 +68,9 @@ Route::middleware("auth")->group(function() {
     Route::get('/dashboard/kelas/new', [KelasController::class, "formNew"])->name("form_new_kelas");
     Route::post('/dashboard/kelas/new/save', [KelasController::class, "newKelas"])->name("new_kelas");
     Route::delete('/dashboard/kelas/delete/{id}', [KelasController::class, "deleteKelas"])->name("delete_kelas");
+
+        ## Kelas semua anggota
+        Route::get('/dashboard/kelas/member/{id}', [Anggota_kelasController::class, "showAnggota"])->name("show_anggota_kelas");
 
 
     ## Tugas CRUD

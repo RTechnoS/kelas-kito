@@ -1,3 +1,5 @@
+@extends("blank")
+@section("konten")
 <form action="{{route("update_user", ['id'=>$id])}}", method="post">
 	@csrf
 	@method("put")
@@ -16,3 +18,4 @@
 	<button type="submit">Simpan</button>
 
 </form>
+@endsection

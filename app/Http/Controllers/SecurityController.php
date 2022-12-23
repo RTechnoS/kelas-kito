@@ -11,7 +11,7 @@ class SecurityController extends Controller
 {
     public function formLogin()
     {
-        return view("security.form-login");
+        return view("security.login");
     }
 
     public function processLogin(Request $request)

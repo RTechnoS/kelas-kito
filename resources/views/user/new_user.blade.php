@@ -1,3 +1,5 @@
+@extends("blank")
+@section("konten")
 @if ($errors->any())
 	<div class="alert alert-danger">
 		<ul>
@@ -26,3 +28,4 @@
 	<button type="submit">Simpan</button>
 
 </form>
+@endsection

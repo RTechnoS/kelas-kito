@@ -1,5 +1,8 @@
-<table border="1px">
-	<thead>
+@extends("blank")
+@section("konten")
+
+<table class="table table-hover" >
+	<thead class="table-dark">
 		<tr>
 			<th>ID</th>
 			<th>Username</th>
@@ -8,7 +11,7 @@
 			<th>Level</th>
 			<th>Created at</th>
 			<th>Update</th>
-			<th>Aksi</th>
+			<!-- <th>Aksi</th> -->
 		</tr>
 	</thead>
 	<tbody>
@@ -22,14 +25,14 @@
 			<td>{{ $data->level}}</td>
 			<td>{{ $data->created_at}}</td>
 			<td>{{ $data->updated_at}}</td>
-			<td width="15%">
+<!-- 			<td width="15%">
 				<a href="{{route("form_edit_user", ["id"=>$data->id])}}">Edit</a>
 				<form action="{{route("delete_user", ['id'=>$data->id])}}", method="post">
 					@csrf
 					@method("delete")
 					<button>Delete</button>
 				</form>
-			</td>
+			</td> -->
 			
 
 		</tr>
@@ -37,4 +40,6 @@
 	</tbody>
 
 </table>
-<a href="{{route("form_new_user")}}">Add User</a>
+<!-- <a href="{{route("form_new_user")}}">Add User</a>
+ -->
+@endsection

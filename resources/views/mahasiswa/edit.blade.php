@@ -1,9 +1,18 @@
+@extends("blank")
+@section("konten")
 <form action="{{route("update_mahasiswa", ['id'=>$id])}}", method="post">
 	@csrf
 	@method("put")
-	<label>Users Id		</label>
-	<input type="number" name="users_id" id="users_id">
+	<label>Username		</label>
+	<input type="text" name="username" id="username">
 	<br>
+	<label>Email	</label>
+	<input type="email" name="email" id="email" placeholder="Enter Email">
+	<br>
+	<label>Password	</label>
+	<input type="password" name="password" id="password">
+	<br>
+	<hr>
 	<label>Nama	</label>
 	<input type="text" name="nama" id="nama">
 	<br>
@@ -23,3 +32,4 @@
 	<button type="submit">Simpan</button>
 
 </form>
+@endsection

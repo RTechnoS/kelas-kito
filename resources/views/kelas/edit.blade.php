@@ -1,3 +1,6 @@
+@extends("blank")
+@section("konten")
+
 <form action="{{route("update_kelas", ['id'=>$id])}}", method="post">
 	@csrf
 	@method("put")
@@ -14,3 +17,5 @@
 	<button type="submit">Simpan</button>
 
 </form>
+
+@endsection

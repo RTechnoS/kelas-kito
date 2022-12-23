@@ -1,5 +1,8 @@
-<table border="1px">
-	<thead>
+@extends("blank")
+@section("konten")
+
+<table class="table table-hover" >
+	<thead class="table-dark">
 		<tr>
 			<th>ID</th>
 			<th>Nama</th>
@@ -23,6 +26,7 @@
 					@method("delete")
 					<button>Delete</button>
 				</form>
+				<a href="{{route("show_anggota_kelas", ["id"=>$data->id])}}">Isi Kelas</a>
 			</td>
 
 		</tr>
@@ -32,3 +36,5 @@
 </table>
 
 <a href="{{route("form_new_kelas")}}">Add Kelas</a>
+
+@endsection

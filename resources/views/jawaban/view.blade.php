@@ -1,6 +1,8 @@
-<table border="1px">
+@extends("blank")
+@section("konten")
 
-	<thead>
+<table class="table table-hover" >
+	<thead class="table-dark">
 		<tr>
 			<th>ID</th>
 			<th>Users Id</th>
@@ -34,3 +36,4 @@
 </table>
 
 <a href="{{route("form_new_jawaban")}}">Add Jawaban</a>
+@endsection

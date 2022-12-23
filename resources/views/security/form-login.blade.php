@@ -1,4 +1,5 @@
-@include("menu")
+@extends("blank")
+@section("konten")
 
 <form action="{{route("process_login") }}" method="post">
 	@csrf
@@ -7,3 +8,4 @@
 	<button type="submit">Login</button>
 </form>
 
+@endsection

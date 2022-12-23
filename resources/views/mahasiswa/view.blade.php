@@ -1,5 +1,7 @@
-<table border="1px">
-	<thead>
+@extends("blank")
+@section("konten")
+<table class="table table-hover" >
+	<thead class="table-dark">
 		<tr>
 			<th>ID</th>
 			<th>Users Id</th>
@@ -38,3 +40,4 @@
 </table>
 
 <a href="{{route("form_new_mahasiswa")}}">Add Mahasiswa</a>
+@endsection
