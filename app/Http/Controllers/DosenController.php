@@ -15,7 +15,9 @@ class DosenController extends Controller
     }
 
     public function formEdit($id){
-        return view("dosen.edit")->with('id', $id);
+        $dosen = Dosen::find($id);
+        $user = User::find($dosen->users_id);
+        return view("dosen.edit")->with(['id'=>$id, 'user'=>$user, 'dosen'=>$dosen]);
     }
 
     public function formNew(){
@@ -28,7 +30,7 @@ class DosenController extends Controller
 
         $data_user->username = $request->get("username");
         $data_user->email = $request->get("email");
-        $data_user->password = $request->get("password");
+        $data_user->password = Hash::make($request->get("password"));
         $data_user->save();
         
         $data->nama = $request->get("nama");

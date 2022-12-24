@@ -15,4 +15,6 @@ Hai, ini adalah dashboard admin</center>
   </div>
 </div>
 
+{{print_r(auth()->user())}}
+
 @endsection

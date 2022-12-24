@@ -7,7 +7,6 @@
 			<th>ID</th>
 			<th>Username</th>
 			<th>Email</th>
-			<th>Password</th>
 			<th>Level</th>
 			<th>Created at</th>
 			<th>Update</th>
@@ -21,7 +20,6 @@
 			<td>{{ $data->id}}</td>
 			<td>{{ $data->username}}</td>
 			<td>{{ $data->email}}</td>
-			<td>{{ $data->password}}</td>
 			<td>{{ $data->level}}</td>
 			<td>{{ $data->created_at}}</td>
 			<td>{{ $data->updated_at}}</td>

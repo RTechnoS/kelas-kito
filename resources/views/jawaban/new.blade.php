@@ -11,21 +11,28 @@
 	</div>
 @endif
 
-
-<form action="{{route("new_jawaban")}}", method="post">
+<form class="justify-content-center" action="{{route("new_jawaban")}}", method="post">
 	@csrf
-	<label>Users Id		</label>
-	<input type="number" name="users_id" id="users_id">
-	<br>
-	<label>Tugas Id		</label>
-	<input type="number" name="tugas_id" id="tugas_id">
-	<br>
-	<label>Isi	</label>
-	<textarea name="isi" id="isi"></textarea>
-	<br>
+	<input hidden type="number" name="tugas_id" id="tugas_id" value="{{$id}}">
+	<div class="mb-3 row">
+	    <label class="col-sm-2 col-form-label"><b>Tugas</b></label>
+	    <div class="col-sm-10">
+	      <label readonly class="form-control-plaintext">{{$tugas['tugas']}}</label>
+	    </div>
+	    <label class="col-sm-2 col-form-label"><b>Soal</b></label>
+	    <div class="col-sm-10">
+	      <label readonly class="form-control-plaintext">{{$tugas['soal']}}</label>
+	    </div>
+	    <label class="col-sm-2 col-form-label"><b>Isi</b></label>
+	    <div class="col-sm-10">
+	      <textarea name="isi" id="isi"></textarea>
+	    </div>
 
-	<button type="submit">Simpan</button>
-
+	    <div class="col-sm-10">
+	    	<br>
+	    	<button class="btn btn-primary" type="submit">Simpan</button>
+	    </div>
+	</div>
 </form>
 
 @endsection

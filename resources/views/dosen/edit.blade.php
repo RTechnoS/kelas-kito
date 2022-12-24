@@ -5,29 +5,26 @@
 	@csrf
 	@method("put")
 	<label>Username		</label>
-	<input type="text" name="username" id="username">
+	<input type="text" name="username" id="username" value="{{$user['username']}}">
 	<br>
 	<label>Email	</label>
-	<input type="email" name="email" id="email" placeholder="Enter Email">
-	<br>
-	<label>Password	</label>
-	<input type="password" name="password" id="password">
+	<input type="email" name="email" id="email" placeholder="Enter Email" value="{{$user['email']}}">
 	<br>
 	<hr>
 	<label>Nama	</label>
-	<input type="text" name="nama" id="nama">
+	<input type="text" name="nama" id="nama" value="{{$dosen['nama']}}">
 	<br>
 	<label>Foto	</label>
-	<input type="text" name="foto" id="foto">
+	<input type="text" name="foto" id="foto" value="{{$dosen['foto']}}">
 	<br>
 	<label>NIDN	</label>
-	<input type="text" name="nidn" id="nidn">
+	<input type="text" name="nidn" id="nidn" value="{{$dosen['nidn']}}">
 	<br>
 	<label>Hp	</label>
-	<input type="text" name="hp" id="hp">
+	<input type="text" name="hp" id="hp" value="{{$dosen['hp']}}">
 	<br>
 	<label>Pendidikan	</label>
-	<input type="text" name="pendidikan" id="pendidikan">
+	<input type="text" name="pendidikan" id="pendidikan" value="{{$dosen['pendidikan']}}">
 	<br>
 
 	<button type="submit">Simpan</button>

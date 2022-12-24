@@ -14,8 +14,8 @@
 
 <form action="{{route("new_kelas")}}", method="post">
 	@csrf
-	<label>Nama		</label>
-	<input type="text" name="nama" id="nama">
+	<label>Kelas		</label>
+	<input type="text" name="kelas" id="kelas">
 	<br>
 	<label>Deskripsi	</label>
 	<textarea name="deskripsi" id="deskripsi"></textarea>

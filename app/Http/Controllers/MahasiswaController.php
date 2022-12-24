@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 #use App\Http\Requests\UserRequest;
 
 class MahasiswaController extends Controller
@@ -15,7 +16,9 @@ class MahasiswaController extends Controller
     }
 
     public function formEdit($id){
-        return view("mahasiswa.edit")->with('id', $id);
+        $mahasiswa = Mahasiswa::find($id);
+        $user = User::find($mahasiswa->users_id);
+        return view("mahasiswa.edit")->with(['id'=> $id, 'user'=>$user, 'mahasiswa'=>$mahasiswa]);
     }
 
     public function formNew(){
@@ -28,10 +31,8 @@ class MahasiswaController extends Controller
 
         $data_user->username = $request->get("username");
         $data_user->email = $request->get("email");
-        $data_user->password = $request->get("password");
         $data_user->save();
 
-        $data->users_id = $request->get("users_id");
         $data->nama = $request->get("nama");
         $data->foto = $request->get("foto");
         $data->nim = $request->get("nim");
@@ -41,11 +42,11 @@ class MahasiswaController extends Controller
         return redirect(route("show_mahasiswa"));
     }
 
-    public function newUser(request $request){
+    public function newMahasiswa(request $request){
         $data_user = new User();
         $data_user->username = $request->get("username");
         $data_user->email = $request->get("email");
-        $data_user->password = $request->get("password");
+        $data_user->password = Hash::make($request->get("password"));
         $data_user->level = 3;
         $data_user->save();
 

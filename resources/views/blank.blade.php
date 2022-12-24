@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset("sb-admin/vendor/fontawesome-free/css/all.min.css")}}" rel="stylesheet" type="text/css">
@@ -28,8 +28,13 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
+    @if(auth()->user()->level==1)
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+    @elseif(auth()->user()->level==2)
+        <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+    @elseif(auth()->user()->level==3)
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
+    @endif
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -37,12 +42,12 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
+
                 <a class="nav-link" href="{{route('dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -57,12 +62,25 @@
                 <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('show_user')}}">User</a>
-                        <a class="collapse-item" href="{{route('show_mahasiswa')}}">Mahasiswa</a>
-                        <a class="collapse-item" href="{{route('show_dosen')}}">Dosen</a>
-                        <a class="collapse-item" href="{{route('show_kelas')}}">Kelas</a>
-                        <a class="collapse-item" href="{{route('show_tugas')}}">Tugas</a>
-                        <a class="collapse-item" href="{{route('show_jawaban')}}">Jawaban</a>
+                        @if(auth()->user()->level == 1)
+                            <a class="collapse-item" href="{{route('show_user')}}">User</a>
+                            <a class="collapse-item" href="{{route('show_mahasiswa')}}">Mahasiswa</a>
+                            <a class="collapse-item" href="{{route('show_dosen')}}">Dosen</a>
+                            <a class="collapse-item" href="{{route('show_kelas')}}">Kelas</a>
+                            <a class="collapse-item" href="{{route('show_tugas')}}">Tugas</a>
+                            <a class="collapse-item" href="{{route('show_jawaban')}}">Jawaban</a>
+                        @elseif(auth()->user()->level == 2)
+                            <a class="collapse-item" href="{{route('show_dosen')}}">Dosen</a>
+                            <a class="collapse-item" href="{{route('show_kelas')}}">Kelas</a>
+                            <a class="collapse-item" href="{{route('show_tugas')}}">Tugas</a>
+                            <a class="collapse-item" href="{{route('show_jawaban')}}">Jawaban</a>
+                        @else
+                            <a class="collapse-item" href="{{route('show_kelas')}}">Kelas</a>
+                            <a class="collapse-item" href="{{route('show_tugas')}}">Tugas</a>
+                            <a class="collapse-item" href="{{route('show_jawaban')}}">Jawaban</a>
+                        @endif
+
+
                     </div>
                 </div>
             </li>
@@ -279,7 +297,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->username}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -359,7 +377,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{route('logout')}}">Logout</a>
                 </div>
             </div>
         </div>
@@ -374,6 +392,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset("sb-admin/js/sb-admin-2.min.js")}}"></script>
+
+
     
 </body>
 
