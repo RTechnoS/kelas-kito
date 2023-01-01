@@ -10,51 +10,42 @@
 	</div>
 @endif
 
-<table class="table table-hover" >
-	<thead class="table-dark">
-		<tr>
-			<th>ID</th>
-			<th>Nama</th>
-			<th>Deskripsi</th>
-			<th>Foto</th>
-			<th>Dosen</th>
-			<th>Aksi</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach($data_kelas as $data)
-		<tr>
-			
-			<td>{{ $data->id}}</td>
-			<td>{{ $data->kelas}}</td>
-			<td>{{ $data->deskripsi}}</td>
-			<td><img src="{{ $data->foto}}" width="30px"></td>
-			<td>{{ $data->nama}}</td>
-			<td width="15%">
-				@if(auth()->user()->level == 3)
-					<a href="{{route("show_detail_kelas", ["id"=>$data->id])}}">
-						<button class="btn btn-primary">Buka</button>
-					</a>
-				@else
-					<a href="{{route("form_edit_kelas", ["id"=>$data->id])}}">
-						<button class="btn btn-warning btn-sm">Edit</button>
-					</a>
-					<form action="{{route("delete_kelas", ['id'=>$data->id])}}", method="post">
-						@csrf
-						@method("delete")
-						<button class="btn btn-danger btn-sm">Delete</button>
-					</form>
-					<a href="{{route("show_detail_kelas", ["id"=>$data->id])}}">
-						<button class="btn btn-primary btn-sm">Buka</button>
-					</a>
-				@endif
-			</td>
+<div class="row row-cols-1 ">
+	@foreach($data_kelas as $data)
 
-		</tr>
-		@endforeach
-	</tbody>
+	<div class="col-md-3 card m-3" style="width: 18rem;">
+	  <img height="50%" src="{{$data->foto}}" class="card-img-top">
+	  <div class="card-body">
+	    <h5 class="card-title">{{$data->kelas}}</h5>
+	    <p class="card-text">{{$data->deskripsi}}</p>
+	    @if(auth()->user()->level == 3)
+			<a href="{{route("show_detail_kelas", ["id"=>$data->id])}}">
+				<button class="btn btn-primary">Buka</button>
+			</a>
+		@else
+			<div class="row">
 
-</table>
+			<a href="{{route("form_edit_kelas", ["id"=>$data->id])}}">
+				<button class="btn btn-warning btn-sm">Edit</button>
+			</a>
+			<form action="{{route("delete_kelas", ['id'=>$data->id])}}", method="post">
+				@csrf
+				@method("delete")
+				<button class="btn btn-danger btn-sm">Delete</button>
+			</form>
+			<a href="{{route("show_detail_kelas", ["id"=>$data->id])}}">
+				<button class="btn btn-primary btn-sm">Buka</button>
+			</a>
+			</div>
+		@endif
+	  </div>
+	  <div class="card-footer text-muted">
+	    {{$data->nama}}
+	  </div>
+	</div>
+	@endforeach
+</div>
+
 @if(auth()->user()->level == 3)
 	
   	<form action="{{route('join_kelas') }}" method="post">

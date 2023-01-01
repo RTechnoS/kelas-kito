@@ -37,10 +37,7 @@
     @endif
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Dashboard</div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -70,7 +67,6 @@
                             <a class="collapse-item" href="{{route('show_tugas')}}">Tugas</a>
                             <a class="collapse-item" href="{{route('show_jawaban')}}">Jawaban</a>
                         @elseif(auth()->user()->level == 2)
-                            <a class="collapse-item" href="{{route('show_dosen')}}">Dosen</a>
                             <a class="collapse-item" href="{{route('show_kelas')}}">Kelas</a>
                             <a class="collapse-item" href="{{route('show_tugas')}}">Tugas</a>
                             <a class="collapse-item" href="{{route('show_jawaban')}}">Jawaban</a>
@@ -97,8 +93,9 @@
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 @if(Auth::check())
-                    <a class="nav-link" href="{{route('logout')}}">
-                        <i class="fas fa-fw fa-table"></i>
+
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal" >
+                        <i class="fas fa-fw fa-sign-out-alt"></i>
                         <span>Logout</span></a>
                 @else
                     <a class="nav-link" href="{{route('login')}}">
